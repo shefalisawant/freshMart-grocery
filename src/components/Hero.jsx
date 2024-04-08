@@ -1,18 +1,59 @@
+import { useGSAP } from "@gsap/react";
 import { HERO_SECTION, SHOP_NOW } from "../constants";
+import gsap from "gsap";
 
 const Heading = () => {
   const {TITLE,SUBTITLE}=HERO_SECTION
+  useGSAP(()=>{
+    let tl = gsap.timeline();
+    tl
+    .fromTo('#title',{
+      opacity:0,
+      y:-20
+    },{
+      opacity:1,
+      y:0
+    })
+    .fromTo('#subtitle',{
+      opacity:0,
+      y:-40
+    },{
+      opacity:1,
+      y:0
+    })
+
+    tl
+    .fromTo("#delivery",{
+      x:0,
+      y:90,
+      rotate:-45,
+      ease:'power2.in',
+    },
+    {
+      x:80,
+      y:-70,
+      rotate:0,
+      ease:'power2.inOut',
+    }   
+  ,0.5)
+  .to(
+    "#delivery",{
+      x:750,
+      ease:'power2.in',
+    }
+  ,"-=0.5")
+  },[])
   return (
     <div className="mt-4">
       <div className="flex-col content-center justify-center items-center px-8">
-        <div className="flex text-center text-7xl font-semibold text-dark-green font-display">
+        <div id="title" className="flex text-center text-7xl font-semibold text-dark-green font-display">
           {TITLE}
         </div>
-        <div className="mt-2 text-center font-mont px-4">
+        <div id="subtitle" className="mt-2 text-center font-mont px-4">
           {SUBTITLE}
         </div>
       </div>
-      <form className="max-w-md mx-auto border-2 border-dark-green rounded-full font-mont my-2 ">
+      <form className="max-w-md mx-auto border-2 border-dark-green rounded-full font-mont mt-2 ">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
@@ -49,8 +90,9 @@ const Heading = () => {
           </button>
         </div>
       </form>
+      <div id="delivery" className="w-8 h-8 bg-cover" style={{backgroundImage: `url('/assets/images/delivery-boy.png')`}}></div>
       <div
-        className="w-full rounded-tl-full rounded-tr-full h-96"
+        className="w-full rounded-tl-full rounded-tr-full h-96 -mt-1"
         style={{ backgroundImage: `url('/assets/images/bg1.jpg')` }}
       ></div>
     </div>
