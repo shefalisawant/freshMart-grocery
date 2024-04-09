@@ -35,11 +35,11 @@ const Details = () => {
     </div>
   );
   return (
-    <div className="py-8 bg-white">
-      <div className="flex-col content-center justify-center items-center pl-4">
-        <div className="flex items-center">
-          <div className="mr-2">
-            <div className="flex text-6xl text-dark-green font-display">
+    <div className="py-4 md:py-8 bg-white">
+      <div className="flex-col content-center justify-center items-center px-2 md:pl-4 md:pr-0">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:mr-2">
+            <div className="flex text-3xl md:text-6xl text-dark-green font-display">
               {TITLE}
             </div>
             <div className="mt-2 font-mont text-xs">
@@ -47,7 +47,7 @@ const Details = () => {
             </div>
             {renderBenefits()}
           </div>
-          <div>
+          <div className="mt-2">
             <img src={"/assets/images/section2.jpg"} alt="delivery" />
           </div>
         </div>
